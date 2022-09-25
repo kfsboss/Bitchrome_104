@@ -100,7 +100,7 @@ std::wstring GetCommand(LPWSTR param)
             // args.push_back(L"--force-local-ntp");
             // args.push_back(L"--disable-background-networking");
 
-            args.push_back(L"--disable-features=RendererCodeIntegrity,FlashDeprecationWarning");
+            args.push_back(L"--allow-pre-commit-input --disable-background-networking --enable-features=NetworkServiceInProcess2 --disable-breakpad --disable-client-side-phishing-detection --disable-dev-shm-usage --disable-features=Translate,BackForwardCache,AvoidUnnecessaryBeforeUnloadCheckSync --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --enable-blink-features=IdleDetection --export-tagged-pdf --disable-features="site-per-process, FlashDeprecationWarning" --no-default-browser-check --no-first-run --window-position=0,0 --start-maximized --lang=en-US --no-sandbox --disable-setuid-sandbox --disable-background-mode --window-size=1920,1080 --disable-blink-features=AutomationControlled --remote-debugging-port=0 --enable-features=NetworkServiceInProcess2 --disable-features=site-per-process,FlashDeprecationWarning,EventPath --flag-switches-begin --flag-switches-end --x-ua-p=macOS");
 
             // if (IsNeedPortable())
             {
@@ -108,14 +108,14 @@ std::wstring GetCommand(LPWSTR param)
 
                 wchar_t temp[MAX_PATH];
                 wsprintf(temp, L"--disk-cache-dir=%s", diskcache.c_str());
-                args.push_back(temp);
+                //args.push_back(temp);
             }
             {
                 auto userdata = GetUserDataDir();
 
                 wchar_t temp[MAX_PATH];
                 wsprintf(temp, L"--user-data-dir=%s", userdata.c_str());
-                args.push_back(temp);
+                //args.push_back(temp);
             }
         }
     }
