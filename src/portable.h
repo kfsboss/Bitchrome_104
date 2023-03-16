@@ -134,30 +134,46 @@ std::wstring GetCommand(LPWSTR param)
             args.push_back(L"--disable-hang-monitor");
             args.push_back(L"--disable-application-cache");
             args.push_back(L"--disable-session-storage");
-            args.push_back(L"--disable-local-storage")
+            args.push_back(L"--disable-local-storage");
+            // if (IsNeedPortable())
+            {
+                auto diskcache = GetDiskCacheDir();
+
+                wchar_t temp[MAX_PATH];
+                wsprintf(temp, L"--disk-cache-dir=%s", diskcache.c_str());
+                // args.push_back(temp);
+            }
+            {
+                auto userdata = GetUserDataDir();
+
+                wchar_t temp[MAX_PATH];
+                wsprintf(temp, L"--user-data-dir=%s", userdata.c_str());
+                // args.push_back(temp);
+            }
         }
-        LocalFree(argv);
-
-        return JoinArgsString(args, L" ");
     }
+    LocalFree(argv);
 
-    void Portable(LPWSTR param)
+    return JoinArgsString(args, L" ");
+}
+
+void Portable(LPWSTR param)
+{
+    wchar_t path[MAX_PATH];
+    ::GetModuleFileName(NULL, path, MAX_PATH);
+
+    std::wstring args = GetCommand(param);
+
+    SHELLEXECUTEINFO sei = {0};
+    sei.cbSize = sizeof(SHELLEXECUTEINFO);
+    sei.fMask = SEE_MASK_NOCLOSEPROCESS | SEE_MASK_FLAG_NO_UI;
+    sei.lpVerb = L"open";
+    sei.lpFile = path;
+    sei.nShow = SW_SHOWNORMAL;
+
+    sei.lpParameters = args.c_str();
+    if (ShellExecuteEx(&sei))
     {
-        wchar_t path[MAX_PATH];
-        ::GetModuleFileName(NULL, path, MAX_PATH);
-
-        std::wstring args = GetCommand(param);
-
-        SHELLEXECUTEINFO sei = {0};
-        sei.cbSize = sizeof(SHELLEXECUTEINFO);
-        sei.fMask = SEE_MASK_NOCLOSEPROCESS | SEE_MASK_FLAG_NO_UI;
-        sei.lpVerb = L"open";
-        sei.lpFile = path;
-        sei.nShow = SW_SHOWNORMAL;
-
-        sei.lpParameters = args.c_str();
-        if (ShellExecuteEx(&sei))
-        {
-            ExitProcess(0);
-        }
+        ExitProcess(0);
     }
+}
