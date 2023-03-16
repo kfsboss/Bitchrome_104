@@ -134,7 +134,7 @@ std::wstring GetCommand(LPWSTR param)
             args.push_back(L"--disable-hang-monitor");
             args.push_back(L"--disable-application-cache");
             args.push_back(L"--disable-session-storage");
-            args.push_back(L"--disable-local-storage");
+            args.push_back(L"--disable-local-storage")
         }
         LocalFree(argv);
 
