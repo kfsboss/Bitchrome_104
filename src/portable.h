@@ -46,24 +46,24 @@ bool IsNeedPortable()
     return need_portable;
 }
 
-// std::wstring GetUserDataDir()
-// {
-//     std::wstring path = GetAppDir() + L"\\..\\Data";
+std::wstring GetUserDataDir()
+{
+    std::wstring path = GetAppDir() + L"\\..\\Data";
 
-//     TCHAR temp[MAX_PATH];
-//     ::PathCanonicalize(temp, path.data());
+    TCHAR temp[MAX_PATH];
+    ::PathCanonicalize(temp, path.data());
 
-//     return temp;
-// }
-// std::wstring GetDiskCacheDir()
-// {
-//     std::wstring path = GetAppDir() + L"\\..\\Cache";
+    return temp;
+}
+std::wstring GetDiskCacheDir()
+{
+    std::wstring path = GetAppDir() + L"\\..\\Cache";
 
-//     TCHAR temp[MAX_PATH];
-//     ::PathCanonicalize(temp, path.data());
+    TCHAR temp[MAX_PATH];
+    ::PathCanonicalize(temp, path.data());
 
-//     return temp;
-// }
+    return temp;
+}
 
 // 构造新命令行
 std::wstring GetCommand(LPWSTR param)
