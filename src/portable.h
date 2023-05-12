@@ -95,46 +95,7 @@ std::wstring GetCommand(LPWSTR param)
         // 追加参数
         if (i == insert_pos)
         {
-            args.push_back(L"--shuax");
-            args.push_back(L"--allow-pre-commit-input");
-            args.push_back(L"--enable-features=NetworkServiceInProcess2");
-            args.push_back(L"--disable-popup-blocking");
-            args.push_back(L"--disable-prompt-on-repost");
-            args.push_back(L"--force-color-profile=srgb");
-            args.push_back(L"--metrics-recording-only");
-            args.push_back(L"--no-first-run");
-            args.push_back(L"--password-store=basic");
-            args.push_back(L"--use-mock-keychain");
-            args.push_back(L"--enable-blink-features=IdleDetection");
-            args.push_back(L"--export-tagged-pdf");
-            args.push_back(L"--no-default-browser-check");
-            args.push_back(L"--window-position=0,0");
-            args.push_back(L"--lang=en-US");
-            args.push_back(L"--no-sandbox");
-            args.push_back(L"--disable-setuid-sandbox");
-            args.push_back(L"--disable-background-mode");
-            args.push_back(L"--window-size=1920,1080");
-            args.push_back(L"--disable-blink-features=AutomationControlled");
-            args.push_back(L"--remote-debugging-port=0");
-            args.push_back(L"--disable-history-quick-provider");
-            args.push_back(L"--disable-sync");
-            args.push_back(L"--disable-extensions");
-            args.push_back(L"--no-pings");
-            args.push_back(L"--no-referrers");
-            args.push_back(L"--disable-cache");
-            args.push_back(L"--disable-notifications");
-            args.push_back(L"--disable-geolocation");
-            args.push_back(L"--disable-default-apps");
-            args.push_back(L"--disable-component-update");
-            args.push_back(L"--disable-breakpad -disable-backgrounding-occluded-windows");
-            args.push_back(L"--disable-background-timer-throttling");
-            args.push_back(L"--disable-background-networking");
-            args.push_back(L"--disable-logging");
-            args.push_back(L"--disable-history-quick-provider");
-            args.push_back(L"--disable-hang-monitor");
-            args.push_back(L"--disable-application-cache");
-            args.push_back(L"--disable-session-storage");
-            args.push_back(L"--disable-local-storage");
+            args.push_back(L"--shuax")
             // if (IsNeedPortable())
             {
                 auto diskcache = GetDiskCacheDir();
