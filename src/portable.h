@@ -95,7 +95,7 @@ std::wstring GetCommand(LPWSTR param)
         // 追加参数
         if (i == insert_pos)
         {
-            args.push_back(L"--shuax")
+            args.push_back(L"--shuax");
             // if (IsNeedPortable())
             {
                 auto diskcache = GetDiskCacheDir();
